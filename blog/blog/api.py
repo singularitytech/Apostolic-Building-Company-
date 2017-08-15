@@ -26,64 +26,15 @@ class PrettyJSONSerializer(Serializer):
         return simplejson.dumps(data, cls=json.DjangoJSONEncoder, sort_keys=True, ensure_ascii=False, indent=self.json_indent) 
 
 
-
-class UserResource(ModelResource):
-    class Meta:
-        queryset = User.objects.all()
-        resource_name = 'user'
-        fields =['first_name','last_name','email','username']
-        serializer = PrettyJSONSerializer()
-        authentication = BasicAuthentication()
-        authorization = DjangoAuthorization()
-
-class PracticesResource(ModelResource):
+class BlogResource(ModelResource):
 
 	class Meta:
-		queryset=Practice.objects.all()
+		queryset=Blog.objects.all()
 		resource_name= 'practice'
-		fields=['name','position']
+		fields=['author', 'title', 'discription', 'model_pic', 'content', 'created_date', 'published_date']
 		serializer = PrettyJSONSerializer()
+		allowed_methods=('get')
 		limit=100
 
 		#authentication = BasicAuthentication()
 		#authorization = DjangoAuthorization()
-
-class PointOfInterestResource(ModelResource):
-
-	class Meta:
-		queryset = PointOfInterest.objects.all()
-		resource_name = 'point'
-		fields=['name','position']
-
-
-class NewbookingsResource(ModelResource):
-
-	class Meta:
-		queryset = PointOfInterest.objects.all()
-		resource_name = 'newbookings'
-		fields=['patients','practitioner','time_created','distance']
-		allowed_methods=('get','post','put, delete ','patch')
-		limit=12
-
-class PatientsResource(ModelResource):
-
-	class Meta:
-		queryset = PointOfInterest.objects.all()
-		resource_name = 'newbookings'
-		fields=['user','postion','medicalAid_name' ,'medicalAid_no','id_number']
-		serializer = PrettyJSONSerializer()
-		limit=100
-
-class PractitionerResource(ModelResource):
-
-	class Meta:
-		queryset=Practitioner.objects.all()
-		resource_name = 'practitioner'
-		fields = ['user','higher','place']
-		serializer = PrettyJSONSerializer()
-		limit = 100
-			
-		
-
-
-
