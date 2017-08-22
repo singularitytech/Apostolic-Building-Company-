@@ -137,8 +137,7 @@ THUMBNAIL_SIZE = (500, 400)
 CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
 # New
 
-import dj_database_url
-DATABASES['default'] = dj_database_url.config()
+
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 

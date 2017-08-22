@@ -4,13 +4,7 @@ from .models import Blog
 
 def index(request):
     posts = Blog.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')[:6]
-    return render(request, 'blog/post_list.html', {'posts': posts})
-
-def about(request):
-	return render(request, 'blog/about.html')
-
-def policy(request):
-	return render(request, 'blog/policy.html')
+    return render(request, 'index.html', {'posts': posts})
 
 def post_list(request):
     posts = Blog.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')[:5]

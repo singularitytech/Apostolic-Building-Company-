@@ -4,8 +4,7 @@ from django.utils import timezone
 from ckeditor_uploader.fields import RichTextUploadingField
 from ckeditor.fields import RichTextField
 # Create your models here.
-import mptt
-from mptt.models import MPTTModel, TreeForeignKey
+
 from django.db import models
 
 from ckeditor.fields import RichTextField
